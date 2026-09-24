@@ -2,10 +2,8 @@ import { Battle, W, H, WEAPONS, NAMES, ROUTES, makeSquad, buildMap, waypoints, f
 
 const $=id=>document.getElementById(id),ctx=$('arena').getContext('2d');
 const money=n=>'$'+n.toLocaleString('ru-RU');
-const mobileLayout=matchMedia('(max-width: 680px)');
 const ordersPanel=document.querySelector('.orders-panel');
-function placeOrders(){if(mobileLayout.matches)$('mobileOrders').append(ordersPanel);else{if($('orderDialog').open)$('orderDialog').close();$('shopButton').before(ordersPanel);}}
-placeOrders();mobileLayout.addEventListener('change',placeOrders);
+$('mobileOrders').append(ordersPanel);
 let squads,baseline,scores,position,round,phase,selected=0,battle,map,roomOwners,mapOrder,lossStreaks,matchOver=false,showRoutes=true,lastFrame=0,toastTimer,eventCount=1;
 const seed=()=>Math.floor(Math.random()*0xffffffff);
 let matchSeed=seed(),mapTexture;
@@ -35,7 +33,7 @@ function render(){
   $('mapHint').textContent=phase==='plan'?'Выбери бойца и назначь маршрут':phase==='fight'?'Приказы приняты. Отряд действует.':'Разбери бой и скорректируй план';
   $('squadCards').innerHTML=squads[0].map((u,i)=>{const live=battle.units[i];return `<button class="unit-card ${i===selected?'selected':''} ${live.hp<=0?'dead':''}" data-unit="${i}" aria-label="Выбрать бойца ${u.name}" aria-pressed="${i===selected}"><span class="unit-art" data-index="0${i+1}">${portrait(i)}<span class="unit-tag">0${i+1}</span><span class="unit-status"></span></span><span class="unit-info"><strong>${u.name}</strong><small>${WEAPONS[u.weapon].name}${u.armor?' / ◇':''}</small><span class="unit-health"><i style="width:${live.hp}%"></i></span></span></button>`;}).join('');
   $('selectedName').textContent=`0${selected+1} / ${NAMES[selected]}`;
-  $('orderSummary').textContent=`${NAMES[selected]} · ${ROUTES[squads[0][selected].route]} · ${{capture:'Захват',cover:'Прикрытие',flank:'Обход'}[squads[0][selected].stance]}`;
+  $('orderSummary').innerHTML=`<strong>Приказы</strong><small>${ROUTES[squads[0][selected].route]} · ${{capture:'Захват',cover:'Прикрытие',flank:'Обход'}[squads[0][selected].stance]}</small>`;
   $('orderButton').disabled=phase!=='plan';
   $('routeOptions').innerHTML=Object.entries(ROUTES).map(([id,label])=>`<button class="route-option ${squads[0][selected].route===id?'active':''}" data-route="${id}" aria-pressed="${squads[0][selected].route===id}" ${phase!=='plan'?'disabled':''}><svg><use href="#${id==='center'?'i-arrow':'i-route'}"/></svg>${label}</button>`).join('');
   $('stanceSelect').value=squads[0][selected].stance;$('stanceSelect').disabled=phase!=='plan';$('delayRange').value=squads[0][selected].delay;$('delayRange').disabled=phase!=='plan';$('delayValue').value=squads[0][selected].delay+' c';
@@ -91,7 +89,7 @@ $('confirmReset').addEventListener('click',()=>{$('resetDialog').close();newMatc
 $('startButton').addEventListener('click',()=>phase==='plan'?startBattle():phase==='result'?nextRound():null);
 $('viewButton').addEventListener('click',()=>{showRoutes=!showRoutes;$('viewButton').setAttribute('aria-pressed',String(showRoutes));});
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{const r=d.getBoundingClientRect();if(e.target===d&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))d.close();}));
-$('arena').addEventListener('click',e=>{if(phase!=='plan')return;const r=e.currentTarget.getBoundingClientRect(),p={x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height};const unit=battle.units.slice(0,3).find(u=>distance(p,u)<35);if(unit){selected=unit.id;render();}});
+$('arena').addEventListener('click',e=>{if(phase!=='plan')return;const r=e.currentTarget.getBoundingClientRect(),scale=Math.min(r.width/W,r.height/H),p={x:(e.clientX-r.left-(r.width-W*scale)/2)/scale,y:(e.clientY-r.top-(r.height-H*scale)/2)/scale};const unit=battle.units.slice(0,3).find(u=>distance(p,u)<35);if(unit){selected=unit.id;render();}});
 
 // Code-drawn arena: no external image assets, crisp on high-density mobile screens.
 function makeTerrain(seedValue){

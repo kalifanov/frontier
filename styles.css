@@ -11,3 +11,157 @@
 @media(max-width:680px){
   .topbar{height:62px}.matchbar{margin:14px auto}.frontline-section{margin-bottom:15px}.frontline-captions{font-size:7px}.section-eyebrow{font-size:8px;letter-spacing:.15px}.game-layout{gap:16px}.arena-heading{margin-bottom:10px}.arena-heading .eyebrow{font-size:8px}.arena-wrap{aspect-ratio:1.34}.arena-footer{font-size:7px}.arena-badge{font-size:8px}.arena-bottomline>span{font-size:8px}.event-strip{min-height:32px;margin-top:10px;font-size:10px}.command-panel .eyebrow{display:none}.squad-heading{margin-bottom:9px}.squad-heading h2{font-size:22px}.unit-art{height:63px}.unit-info{padding:7px 8px 9px}.unit-info small{font-size:9px}.unit-health{margin-top:6px}.unit-art:before{font-size:56px}.mobile-order-button{display:flex;align-items:center;gap:7px;width:100%;min-height:43px;margin-top:9px;padding:7px 8px;background:#e0e4d7;color:#4c5b44;text-align:left}.mobile-order-button svg{width:16px;height:16px}.mobile-order-button>span:first-of-type{font-size:10px;font-weight:600;flex:1}.mobile-order-button>span:last-child{font:8px var(--mono);white-space:nowrap}.shop-button{padding:11px 0}.start-area{position:sticky;bottom:0;z-index:2;background:var(--paper);padding:12px 0 calc(10px + env(safe-area-inset-bottom));margin:0 -1px}.ready-caption{font-size:8px}.start-note{display:none}.app-footer{margin-top:12px}.sheet .orders-panel{margin:0;border:0;padding:0;background:transparent}.sheet .orders-title strong{font-size:13px}.sheet .orders-title .eyebrow{font-size:10px}.sheet .route-option{min-height:54px;font-size:13px}.sheet .stance-row,.sheet .delay-row{margin-top:20px;font-size:13px}.sheet .stance-row select{font-size:14px;min-height:44px}.sheet .delay-row input{height:30px}.sheet .delay-row output{font-size:12px}.sheet .route-options{margin-top:20px}.sheet .sheet-note{margin:25px 0}.shop-tab{font-size:12px}.weapon-copy strong{font-size:14px}.weapon-copy small{font-size:11px}.weapon-price{font-size:12px}.utility-option{font-size:13px}.utility-option strong{font-size:11px}.help-steps p,.concept-note p{font-size:14px}
 }
+
+/* Portrait game surface: the same phone-sized composition on every device. */
+html, body { min-height: 100%; }
+body { background: #d9dcd2; }
+.app-shell {
+  width: 100%; max-width: 430px; height: 100dvh; min-height: 540px;
+  margin: 0 auto; padding: env(safe-area-inset-top) 14px env(safe-area-inset-bottom);
+  background: var(--paper); display: flex; flex-direction: column;
+}
+.topbar { height: 52px; flex: 0 0 52px; }
+.brand { font-size: 27px; gap: 8px; }
+.brand-mark { width: 29px; height: 32px; font-size: 32px; }
+.brand-caption { display: none; }
+.topbar-right { gap: 9px; }
+.demo-tag { font-size: 9px; letter-spacing: .3px; }
+.icon-button { width: 44px; height: 44px; border: 0; }
+.icon-button svg { width: 21px; height: 21px; }
+main { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.matchbar { width: 100%; height: 54px; flex: 0 0 54px; margin: 0; }
+.commander { gap: 7px; }
+.commander-avatar { width: 28px; height: 32px; font-size: 22px; }
+.commander strong { font-size: 10px; letter-spacing: .4px; }
+.commander div > span { font-size: 10px; margin-top: 2px; }
+.scoreboard { font-size: 28px; gap: 10px; padding-bottom: 12px; }
+.scoreboard small { font-size: 8px; letter-spacing: .5px; }
+.frontline-section { width: 100%; margin: 0; height: 48px; flex: 0 0 48px; }
+.section-eyebrow { font-size: 8px; letter-spacing: .2px; }
+.frontline { height: 25px; margin: 6px 0 0; }
+.front-node { width: 23px; height: 20px; }
+.front-node.current { width: 23px; height: 23px; }
+.front-node svg { width: 17px; height: 17px; }
+.frontline-captions { display: none; }
+.game-layout { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr; grid-template-rows: minmax(150px, 1fr) auto; gap: 6px; align-items: stretch; }
+.battlefield-panel { min-height: 0; display: grid; grid-template-rows: 39px minmax(0, 1fr) 16px 22px; gap: 4px; }
+.arena-heading { margin: 0; }
+.arena-heading .eyebrow { display: block; font-size: 8px; line-height: 10px; letter-spacing: .5px; }
+h1, .arena-heading h1 { font-size: 23px; line-height: 1.05; letter-spacing: -1px; margin-top: 1px; }
+.round-clock { font-size: 16px; padding: 7px 9px; gap: 7px; }
+.round-clock svg { width: 16px; height: 16px; }
+.arena-wrap { min-height: 0; height: 100%; width: 100%; aspect-ratio: auto; margin: 0; box-shadow: none; }
+.arena-wrap canvas { position: absolute; inset: 0; margin: auto; width: 100%; height: 100%; object-fit: contain; }
+.arena-topline { top: 8px; left: 8px; right: 8px; }
+.arena-badge { font-size: 8px; padding: 5px 6px; letter-spacing: .4px; }
+.arena-coordinate { font-size: 10px; }
+.arena-bottomline { bottom: 0; left: 0; right: 0; justify-content: flex-end; }
+.arena-bottomline > span { display: none; }
+.map-control { width: 44px; height: 44px; border: 0; background: #1b2826bb; }
+.map-control svg { width: 18px; height: 18px; }
+.arena-footer { margin: 0; font-size: 8px; letter-spacing: 0; gap: 10px; }
+.legend-dot { width: 5px; height: 5px; }
+.event-strip { margin: 0; min-height: 0; height: 22px; font-size: 10px; gap: 7px; border-bottom: 0; }
+#eventText { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.event-index { font-size: 9px; }
+.command-panel { padding: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6px; }
+.squad-heading { grid-column: 1 / -1; min-height: 0; height: 29px; margin: 0; }
+.squad-heading .eyebrow { display: none; }
+.squad-heading h2 { font-size: 19px; margin: 0; letter-spacing: -.6px; }
+.squad-heading h2 span { font-size: 10px; }
+.text-button { min-height: 29px; padding: 5px 0 5px 10px; font-size: 10px; }
+.squad-cards { grid-column: 1 / -1; gap: 6px; }
+.unit-art { height: 52px; }
+.unit-art:before { font-size: 48px; }
+.unit-art svg { width: 76px; left: 50%; transform: translateX(-50%); }
+.unit-tag { font-size: 8px; }
+.unit-info { padding: 6px 8px; }
+.unit-info strong { font-size: 11px; letter-spacing: .3px; }
+.unit-info small { font-size: 9px; margin-top: 3px; }
+.unit-health { margin-top: 5px; }
+.mobile-order-button, .shop-button { display: flex; align-items: center; gap: 7px; width: 100%; height: 48px; min-height: 48px; margin: 0; padding: 6px 9px; background: #e0e4d7; border: 1px solid #d0d7c7; color: var(--ink); text-align: left; }
+.mobile-order-button > svg, .shop-icon svg { width: 19px; height: 19px; }
+.mobile-order-button > span:first-of-type { min-width: 0; flex: 1; }
+.mobile-order-button > span:last-child, .shop-button small, .shop-button .arrow-icon { display: none; }
+#orderSummary strong, .shop-button strong { display: block; font-size: 12px; font-weight: 700; }
+#orderSummary small { display: block; font-size: 10px; margin-top: 2px; color: #66725b; white-space: nowrap; }
+.shop-icon { width: 23px; height: 25px; background: transparent; }
+.shop-button { display: grid; grid-template-columns: 23px minmax(0, 1fr); grid-template-rows: 17px 13px; column-gap: 5px; row-gap: 0; align-content: center; }
+.shop-icon { grid-row: 1 / 3; }
+.shop-button > span:nth-child(2) { grid-column: 2; }
+.budget { grid-column: 2; display: block; width: 100%; font-size: 11px; margin: 0; padding: 0; line-height: 1; }
+.start-area { grid-column: 1 / -1; position: static; padding: 0 0 8px; margin: 0; }
+.ready-caption { margin: 0 0 5px; font-size: 8px; letter-spacing: .1px; }
+.start-button { height: 50px; min-height: 50px; padding: 0 16px; font-size: 13px; }
+.start-note, .app-footer { display: none; }
+.result-overlay { padding: 15px; }
+.result-icon { width: 35px; height: 35px; margin-bottom: 15px; }
+.result-icon svg { width: 23px; height: 23px; }
+.result-overlay h2 { font-size: 27px; margin: 6px 0; }
+.result-overlay p { font-size: 12px; line-height: 1.5; }
+.result-score { font-size: 23px; margin-top: 10px; }
+.sheet { width: min(100%, 430px); max-width: 430px; max-height: calc(100dvh - 20px); margin: auto auto 0; border-radius: 18px 18px 0 0; padding: 20px 18px calc(20px + env(safe-area-inset-bottom)); overflow-y: auto; }
+.sheet-header { margin-bottom: 18px; }
+.sheet-header h2 { font-size: 27px; }
+.sheet-header .eyebrow { font-size: 10px; }
+.sheet-header .icon-button { width: 44px; height: 44px; }
+.sheet .orders-panel { margin: 0; padding: 0; border: 0; background: transparent; }
+.orders-title strong { font-size: 13px; }
+.orders-title .eyebrow { font-size: 10px; }
+.route-option { min-height: 50px; font-size: 13px; }
+.stance-row, .delay-row { margin-top: 18px; font-size: 13px; }
+.stance-row select { font-size: 16px; min-height: 44px; }
+.delay-row input { width: 95px; height: 32px; }
+.delay-row output { font-size: 12px; }
+.shop-tab { min-height: 44px; font-size: 12px; }
+.weapon-copy strong { font-size: 14px; }
+.weapon-copy small { font-size: 11px; }
+.weapon-price { font-size: 11px; }
+.utility-option { min-height: 56px; font-size: 13px; }
+.utility-option strong { font-size: 11px; }
+.sheet-note { font-size: 12px; line-height: 1.6; margin: 18px 0; }
+.help-steps p, .concept-note p { font-size: 14px; }
+@media (min-width: 600px) {
+  body { display: grid; place-items: center; min-height: 100dvh; }
+  .app-shell { height: min(900px, calc(100dvh - 24px)); border: 1px solid #c5cbbd; box-shadow: 0 18px 70px #26362420; border-radius: 18px; }
+  .sheet { margin-bottom: max(12px, calc((100dvh - 900px) / 2)); border-radius: 18px; }
+}
+@media (max-height: 720px) {
+  .topbar { height: 44px; flex-basis: 44px; }
+  .brand { font-size: 24px; }
+  .brand-mark { height: 27px; width: 25px; font-size: 28px; }
+  .matchbar { height: 43px; flex-basis: 43px; }
+  .commander div > span { display: none; }
+  .commander-avatar { height: 26px; width: 24px; font-size: 19px; }
+  .frontline-section { height: 36px; flex-basis: 36px; }
+  .section-eyebrow > span:first-child { display: none; }
+  .section-eyebrow { justify-content: flex-end; font-size: 7px; }
+  .frontline { margin-top: 2px; height: 21px; }
+  .front-node.current { width: 19px; height: 19px; border-width: 3px; }
+  .battlefield-panel { grid-template-rows: 34px minmax(0, 1fr) 14px 20px; gap: 3px; }
+  h1, .arena-heading h1 { font-size: 21px; }
+  .arena-heading .eyebrow { font-size: 7px; }
+  .command-panel { gap: 4px; }
+  .squad-heading { height: 25px; }
+  .unit-art { height: 36px; }
+  .unit-info { padding: 4px 7px; }
+  .unit-info strong { font-size: 10px; }
+  .unit-health { margin-top: 3px; }
+  .mobile-order-button, .shop-button { min-height: 44px; height: 44px; }
+  .start-button { min-height: 46px; height: 46px; }
+  .ready-caption { margin-bottom: 3px; }
+  .start-area { padding-bottom: 6px; }
+  .result-icon { display: none; }
+  .result-overlay { padding: 8px; }
+  .result-overlay h2 { font-size: 21px; margin: 3px 0; }
+  .result-overlay p { font-size: 10px; line-height: 1.3; }
+  .result-score { font-size: 18px; margin-top: 4px; }
+}
+@media (max-width: 350px) {
+  .app-shell { padding-left: 10px; padding-right: 10px; }
+  .commander strong { font-size: 9px; }
+  .arena-footer { font-size: 7px; gap: 7px; }
+  .mobile-order-button, .shop-button { padding: 5px 6px; gap: 5px; }
+  #orderSummary strong, .shop-button strong { font-size: 11px; }
+  #orderSummary small { font-size: 9px; }
+}
